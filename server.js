@@ -3,7 +3,7 @@ const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const port = 5000;
+const port = process.env.PORT || 5000;
 //const path = require('path');
 require('dotenv/config');
 
@@ -19,14 +19,10 @@ app.use('/posts', postsRoute);
 app.use('/todos', todosRoute);
 
 //HOME ROUTE
-//app.use(express.static('public'));
-
-/*app.get('/', (req, res) => {
-  res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
-});*/
+app.use(express.static('public'));
 
 app.get('/', (req, res) => {
-  res.send('We are on home');
+  res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
 });
 
 // CONNECT TO DATABASE

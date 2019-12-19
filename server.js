@@ -21,13 +21,13 @@ app.use('/todos', todosRoute);
 //HOME ROUTE
 app.use(express.static('public'));
 
-app.get('/', (req, res) => {
+/*app.get('/', (req, res) => {
   res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
-});
+});*/
 
-//app.get('/', (req, res) => {
-  //res.send('We are on home');
-//});
+app.get('/', (req, res) => {
+  res.send('We are on home');
+});
 
 // CONNECT TO DATABASE
 mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true }, () => {
